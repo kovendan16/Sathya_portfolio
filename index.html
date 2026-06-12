@@ -280,24 +280,6 @@
             border-radius: 2px;
         }
 
-        .btn-resume {
-            background: linear-gradient(135deg, #6366f1, #a855f7);
-            color: #fff !important;
-            border: none;
-            padding: 8px 22px !important;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-resume:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
-        }
-
         .theme-toggle {
             background: var(--bg-glass);
             border: 1px solid var(--border-glass);
@@ -323,11 +305,6 @@
             border-radius: 10px;
         }
 
-        .navbar-toggler-icon {
-            background-image: none;
-            position: relative;
-        }
-
         .navbar-toggler span {
             display: block;
             width: 22px;
@@ -351,50 +328,6 @@
         .hero-content {
             position: relative;
             z-index: 2;
-        }
-
-        .profile-frame {
-            position: relative;
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 30px;
-        }
-
-        .profile-frame::before {
-            content: '';
-            position: absolute;
-            inset: -6px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #6366f1, #a855f7, #22d3ee);
-            animation: rotateGlow 4s linear infinite;
-            z-index: 0;
-        }
-
-        .profile-frame::after {
-            content: '';
-            position: absolute;
-            inset: -6px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #6366f1, #a855f7, #22d3ee);
-            filter: blur(20px);
-            opacity: 0.5;
-            animation: rotateGlow 4s linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes rotateGlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .profile-img {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            object-fit: cover;
-            position: relative;
-            z-index: 1;
-            border: 4px solid var(--bg-primary);
         }
 
         .hero-greeting {
@@ -425,7 +358,7 @@
         }
 
         .hero-name {
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(2.8rem, 7vw, 4.5rem);
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 8px;
@@ -459,7 +392,7 @@
         .hero-desc {
             color: var(--text-muted);
             font-size: 1rem;
-            max-width: 500px;
+            max-width: 550px;
             margin-bottom: 30px;
             line-height: 1.8;
         }
@@ -551,29 +484,143 @@
             box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
         }
 
-        /* ========== ABOUT ========== */
-        .about-img-wrapper {
+        /* Hero decorative icon */
+        .hero-decor {
             position: relative;
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .about-img-wrapper img {
-            border-radius: var(--radius);
-            width: 100%;
-            max-width: 380px;
-            object-fit: cover;
+        .hero-icon-circle {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(168,85,247,0.1));
             border: 2px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: floatUp 6s ease-in-out infinite;
         }
 
-        .about-img-wrapper::before {
+        .hero-icon-circle::before {
             content: '';
             position: absolute;
             inset: -8px;
-            border-radius: calc(var(--radius) + 4px);
+            border-radius: 50%;
             background: linear-gradient(135deg, #6366f1, #a855f7, #22d3ee);
             z-index: -1;
-            filter: blur(20px);
-            opacity: 0.3;
+            filter: blur(25px);
+            opacity: 0.4;
+            animation: rotateGlow 4s linear infinite;
+        }
+
+        .hero-icon-circle i {
+            font-size: 6rem;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Floating orbit dots */
+        .orbit-dot {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: orbit 8s linear infinite;
+        }
+
+        .orbit-dot-1 {
+            background: #6366f1;
+            top: 10%;
+            right: 5%;
+            animation-delay: 0s;
+            box-shadow: 0 0 15px rgba(99,102,241,0.6);
+        }
+
+        .orbit-dot-2 {
+            background: #a855f7;
+            bottom: 15%;
+            left: 5%;
+            animation-delay: -3s;
+            box-shadow: 0 0 15px rgba(168,85,247,0.6);
+        }
+
+        .orbit-dot-3 {
+            background: #22d3ee;
+            top: 50%;
+            right: -5%;
+            animation-delay: -5s;
+            width: 8px;
+            height: 8px;
+            box-shadow: 0 0 15px rgba(34,211,238,0.6);
+        }
+
+        @keyframes orbit {
+            0% { transform: rotate(0deg) translateX(15px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(15px) rotate(-360deg); }
+        }
+
+        /* ========== ABOUT ========== */
+        .about-icon-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-icon-box {
+            width: 300px;
+            height: 350px;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(168,85,247,0.08));
+            border: 2px solid var(--border-glass);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-icon-box::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: calc(var(--radius-lg) + 4px);
+            background: linear-gradient(135deg, #6366f1, #a855f7, #22d3ee);
+            z-index: -1;
+            filter: blur(30px);
+            opacity: 0.25;
+        }
+
+        .about-icon-box i {
+            font-size: 5rem;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-icon-box span {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
         }
 
         .about-info li {
@@ -1264,13 +1311,16 @@
             .hero-desc { margin-left: auto; margin-right: auto; }
             .hero-btns { justify-content: center; }
             .hero-socials { justify-content: center; }
-            .about-img-wrapper { display: block; text-align: center; margin-bottom: 30px; }
+            .hero-decor { margin-bottom: 30px; }
+            .about-icon-wrapper { margin-bottom: 30px; }
         }
 
         @media (max-width: 575px) {
             section { padding: 70px 0; }
-            .profile-frame { width: 170px; height: 170px; }
-            .profile-img { width: 170px; height: 170px; }
+            .hero-icon-circle { width: 220px; height: 220px; }
+            .hero-icon-circle i { font-size: 4rem; }
+            .about-icon-box { width: 240px; height: 280px; }
+            .about-icon-box i { font-size: 3.5rem; }
         }
 
         /* ========== LOADER ========== */
@@ -1341,9 +1391,6 @@
                 <a class="nav-link" href="#portfolio" data-section="portfolio">Portfolio</a>
                 <a class="nav-link" href="#experience" data-section="experience">Experience</a>
                 <a class="nav-link" href="#contact" data-section="contact">Contact</a>
-                <a class="btn-resume nav-link" href="#" onclick="downloadResume(event)">
-                    <i class="fas fa-download me-1"></i> Resume
-                </a>
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
                     <i class="fas fa-moon" id="themeIcon"></i>
                 </button>
@@ -1370,7 +1417,6 @@
                 <a class="nav-link" href="#portfolio" data-section="portfolio" onclick="closeMobileNav()">Portfolio</a>
                 <a class="nav-link" href="#experience" data-section="experience" onclick="closeMobileNav()">Experience</a>
                 <a class="nav-link" href="#contact" data-section="contact" onclick="closeMobileNav()">Contact</a>
-                <a class="btn-resume nav-link" href="#" onclick="downloadResume(event)">Resume</a>
             </div>
         </div>
     </div>
@@ -1396,8 +1442,8 @@
                     <a href="#contact" class="btn-primary-custom" onclick="addRipple(event)">
                         <i class="fas fa-paper-plane me-2"></i>Hire Me
                     </a>
-                    <a href="#" class="btn-outline-custom" onclick="downloadResume(event)">
-                        <i class="fas fa-download me-2"></i>Download Resume
+                    <a href="#portfolio" class="btn-outline-custom">
+                        <i class="fas fa-briefcase me-2"></i>View My Work
                     </a>
                 </div>
                 <div class="hero-socials fade-up delay-5">
@@ -1408,8 +1454,13 @@
                 </div>
             </div>
             <div class="col-lg-6 text-center order-lg-1 mb-4 mb-lg-0">
-                <div class="profile-frame mx-auto fade-up">
-                    <img src="https://picsum.photos/seed/sathya-seo-profile/400/400.jpg" alt="Sathya - SEO Senior" class="profile-img" loading="lazy">
+                <div class="hero-decor mx-auto fade-up">
+                    <div class="hero-icon-circle">
+                        <i class="fas fa-search"></i>
+                        <div class="orbit-dot orbit-dot-1"></div>
+                        <div class="orbit-dot orbit-dot-2"></div>
+                        <div class="orbit-dot orbit-dot-3"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1426,8 +1477,11 @@
         </div>
         <div class="row align-items-center g-4">
             <div class="col-lg-5 fade-left">
-                <div class="about-img-wrapper">
-                    <img src="https://picsum.photos/seed/sathya-about-photo/500/600.jpg" alt="About Sathya" loading="lazy">
+                <div class="about-icon-wrapper">
+                    <div class="about-icon-box">
+                        <i class="fas fa-chart-line"></i>
+                        <span>SEO Senior</span>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-7 fade-right">
@@ -1973,7 +2027,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Sathya. All rights reserved. Crafted with <i class="fas fa-heart" style="color:#a855f7;"></i></p>
+            <p>&copy; 2026 Sathya. All rights reserved. Crafted with <i class="fas fa-heart" style="color:#a855f7;"></i></p>
         </div>
     </div>
 </footer>
@@ -2185,13 +2239,6 @@ const observer = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
 
-            // Animate skill bars
-            const skillFills = entry.target.querySelectorAll('.skill-fill');
-            skillFills.forEach(fill => {
-                const width = fill.getAttribute('data-width');
-                fill.style.width = width + '%';
-            });
-
             // Animate counters
             const counters = entry.target.querySelectorAll('.stat-number');
             counters.forEach(counter => {
@@ -2347,12 +2394,6 @@ function handleNewsletter(event) {
     event.preventDefault();
     showToast('🎉 Subscribed! Check your inbox for a welcome email.');
     event.target.reset();
-}
-
-// ==================== RESUME DOWNLOAD ====================
-function downloadResume(event) {
-    event.preventDefault();
-    showToast('📄 Resume download started!');
 }
 
 // ==================== SKILL BARS OBSERVER ====================
